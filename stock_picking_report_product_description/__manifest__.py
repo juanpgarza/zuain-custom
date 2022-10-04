@@ -1,13 +1,13 @@
-# Copyright 2021 openNova - Juan Pablo Garza <juanp@opennova.com.ar>
+# Copyright 2022 juanpgarza - Juan Pablo Garza <juanp@juanpgarza.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
     "name": "Stock picking report product description",    
     "summary": "Change the product description in the stock reports",
-    "version": "13.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Stock",
-    "website": "https://github.com/OpenNovaSoft/misc-addons",
-    "author": "openNova",
+    "website": "https://github.com/juanpgarza/zuain-custom",
+    "author": "juanpgarza",
     "license": "AGPL-3",
     "depends": ["stock"],
     "data": [
