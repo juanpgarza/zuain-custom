@@ -4,7 +4,7 @@
 {
     "name": "account payment group report ux",
     "summary": "",
-    "version": "15.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Accounting",
     "website": "https://github.com/juanpgarza/zuain-custom",
     "author": "juanpgarza",
@@ -14,7 +14,8 @@
         "l10n_ar_ux",
         ],
     "data": [
-        'views/report_payment_group.xml',
+        'views/account_payment_group_report.xml',
+        # 'views/report_payment_group.xml',
         ],
     "installable": True,
 }

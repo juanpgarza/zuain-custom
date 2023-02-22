@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <template id="account_payment_group_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Detalle de imputaciones de: <span t-field='o.name'/></h2>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <t t-foreach="o.matched_move_line_ids" t-as="line">
+                            <h5>Factura: <span t-field='line.move_id.display_name'/> - Importe Original: <span t-field='line.credit'/></h5>
+                            <table class="table table-sm o_main_table" name="detalle_imputacion">
+                                <thead>
+                                    <tr>
+                                        <th><span>Pagos</span></th>
+                                        <th class="text-right"><span>Importe</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="line.matched_debit_ids" t-as="debit_line">
+                                        <tr>
+                                            <td>
+                                                <span t-field='debit_line.debit_move_id.move_id.display_name'/>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span t-field='debit_line.amount'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <t t-if="line.amount_residual == 0">
+                                <t t-set="saldo" t-value="0"/>
+                                <t t-set="total_imputaciones" t-value="line.credit"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="saldo" t-value="line.amount_residual * -1"/>
+                                <t t-set="total_imputaciones" t-value="line.credit - (line.amount_residual * -1)"/>
+                            </t>
+
+                            <h5>Total imputaciones a la fecha: <t t-esc="total_imputaciones" t-options="{'widget': 'monetary', 'display_currency': o.payment_ids.mapped('currency_id')}"/></h5>
+                            <h5>Saldo pendiente: <t t-esc="saldo" t-options="{'widget': 'monetary', 'display_currency': o.payment_ids.mapped('currency_id')}"/></h5>
+
+                            <br/>
+                            <br/>
+                            <br/>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <report
+        string="Detalle de imputaciones"
+        id="action_report_payment_group"
+        model="account.payment.group"
+        report_type="qweb-pdf"
+        name="account_payment_group_report.account_payment_group_report"
+        file="account_payment_group_report.account_payment_group_report"
+        print_report_name="(object.partner_type == 'supplier' and 'Orden de pago' or 'Recibo') + ' ' + (object.document_number or 'Borrador')"
+    />
+
+</odoo>
