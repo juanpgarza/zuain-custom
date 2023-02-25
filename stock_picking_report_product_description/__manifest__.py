@@ -4,7 +4,7 @@
 {
     "name": "Stock picking report product description",    
     "summary": "Change the product description in the stock reports",
-    "version": "15.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Stock",
     "website": "https://github.com/juanpgarza/zuain-custom",
     "author": "juanpgarza",
