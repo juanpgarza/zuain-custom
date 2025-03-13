@@ -4,7 +4,7 @@
 {
     "name": "zuain",
     "summary": "Personalizaciones pedidas por Zuain",
-    "version": "13.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Misc",
     "website": "https://github.com/juanpgarza/zuain-custom",
     "author": "juanpgarza",
@@ -13,8 +13,8 @@
         "product_pricelist", # adhoc
         ],
     "data": [
-            'views/product_product_views.xml',
+            # 'views/product_product_views.xml',
             'views/product_template_views.xml',
         ],
-    "installable": False,
+    "installable": True,
 }
