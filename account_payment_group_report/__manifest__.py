@@ -17,5 +17,5 @@
         'views/account_payment_group_report.xml',
         # 'views/report_payment_group.xml',
         ],
-    "installable": True,
+    "installable": False,
 }

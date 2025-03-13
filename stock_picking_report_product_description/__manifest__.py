@@ -14,5 +14,5 @@
         'views/report_stockpicking_operations.xml',
         ],
     "development_status": "Production/Stable",        
-    "installable": True,
+    "installable": False,
 }

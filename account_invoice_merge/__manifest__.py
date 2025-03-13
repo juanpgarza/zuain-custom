@@ -17,5 +17,5 @@
     "license": "AGPL-3",
     "depends": ["account"],
     "data": ["wizard/invoice_merge_view.xml"],
-    "installable": True,
+    "installable": False,
 }
