@@ -26,6 +26,7 @@ class ProductPricelist(models.Model):
             model = 'product.template'
         else:
             self.price = 0.0
+            self.price_with_tax = 0
 
         if active_id and model:
             for rec in self:
