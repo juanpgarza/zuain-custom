@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="product_pricelist.product_template_only_form_view"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='pricelist_ids']/tree/field[@name='price']" position="after">
+            <xpath expr="//field[@name='pricelist_ids']/list/field[@name='price']" position="after">
                 <field name="price_with_tax"/>
             </xpath>
 

@@ -29,9 +29,9 @@ class ProductPricelist(models.Model):
             self.price_with_tax = 0
 
         if active_id and model:
+            product = self.env[model].browse(active_id)
             for rec in self:
-                rec.price = self.env[model].browse(active_id).with_context(pricelist=rec.id)._get_contextual_price()
-                product = self.env[model].browse(active_id)
+                contextual_price = product.with_context(pricelist=rec.id)._get_contextual_price()
+                rec.sudo().write({"price": contextual_price})
                 porc_iva = 1 + product.taxes_id.amount / 100
                 rec.price_with_tax = rec.price * porc_iva
-                
