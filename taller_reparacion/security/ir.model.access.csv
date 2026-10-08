@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_taller_reparacion_user,taller.reparacion.user,model_taller_reparacion,sales_team.group_sale_salesman,1,1,1,0
+access_taller_reparacion_manager,taller.reparacion.manager,model_taller_reparacion,sales_team.group_sale_manager,1,1,1,1
+access_taller_vehiculo_user,taller.vehiculo.user,model_taller_vehiculo,sales_team.group_sale_salesman,1,1,1,0
+access_taller_vehiculo_manager,taller.vehiculo.manager,model_taller_vehiculo,sales_team.group_sale_manager,1,1,1,1
+access_taller_reparacion_vincular_venta,taller.reparacion.vincular.venta,model_taller_reparacion_vincular_venta,sales_team.group_sale_salesman,1,1,1,1

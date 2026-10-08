@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="taller_reparacion_vincular_venta_view_form" model="ir.ui.view">
+        <field name="name">taller.reparacion.vincular.venta.form</field>
+        <field name="model">taller.reparacion.vincular.venta</field>
+        <field name="arch" type="xml">
+            <form string="Vincular pedido de venta">
+                <group>
+                    <field name="reparacion_id" invisible="1"/>
+                    <field name="ya_vinculados_ids" invisible="1"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="modo" widget="radio"/>
+                </group>
+                <field name="sale_order_ids" invisible="modo != 'existente'"
+                       required="modo == 'existente'"
+                       options="{'no_create': True}">
+                    <list>
+                        <field name="name"/>
+                        <field name="date_order"/>
+                        <field name="amount_total"/>
+                        <field name="state" widget="badge"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="action_confirmar" type="object" string="Confirmar" class="btn-primary"/>
+                    <button special="cancel" string="Cancelar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
