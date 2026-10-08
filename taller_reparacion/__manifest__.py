@@ -4,7 +4,7 @@
 {
     "name": "Taller - Registro de reparaciones",
     "summary": "Órdenes de trabajo de taller vinculadas a vehículos y pedidos de venta",
-    "version": "18.0.1.2.0",
+    "version": "18.0.1.3.0",
     "category": "Sales",
     "website": "https://github.com/juanpgarza/zuain-custom",
     "author": "juanpgarza",
@@ -15,6 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/ir_sequence_data.xml",
+        "report/taller_reparacion_report.xml",
         "wizard/taller_reparacion_vincular_venta_views.xml",
         "views/taller_vehiculo_views.xml",
         "views/taller_reparacion_views.xml",

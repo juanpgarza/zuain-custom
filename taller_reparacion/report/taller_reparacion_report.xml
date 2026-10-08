@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_taller_reparacion" model="ir.actions.report">
+        <field name="name">Orden de trabajo</field>
+        <field name="model">taller.reparacion</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">taller_reparacion.report_taller_reparacion</field>
+        <field name="report_file">taller_reparacion.report_taller_reparacion</field>
+        <field name="print_report_name">'Orden de trabajo - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_taller_reparacion"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_taller_reparacion_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+            <div class="page">
+                <h2>Orden de trabajo <span t-field="o.name"/></h2>
+                <div class="row mt-4 mb-4">
+                    <div class="col-6">
+                        <strong>Cliente:</strong>
+                        <div t-field="o.partner_id"
+                             t-options="{'widget': 'contact', 'fields': ['name', 'address', 'phone'], 'no_marker': True}"/>
+                    </div>
+                    <div class="col-6">
+                        <div><strong>Fecha:</strong> <span t-field="o.fecha_ingreso"/></div>
+                        <div><strong>Patente:</strong> <span t-field="o.vehiculo_id.patente"/></div>
+                        <div t-if="o.vehiculo_id.marca or o.vehiculo_id.modelo">
+                            <strong>Vehículo:</strong>
+                            <span t-field="o.vehiculo_id.marca"/> <span t-field="o.vehiculo_id.modelo"/>
+                        </div>
+                        <div t-if="o.vehiculo_id.anio">
+                            <strong>Año:</strong> <span t-out="o.vehiculo_id.anio"/>
+                        </div>
+                    </div>
+                </div>
+                <h4>Trabajos realizados</h4>
+                <div class="border p-3" style="min-height: 250px;">
+                    <div t-field="o.notas_reparacion"/>
+                </div>
+                <div class="row mt-5 pt-5" style="page-break-inside: avoid;">
+                    <div class="col-5 offset-7 text-center">
+                        <div class="border-top border-dark pt-2">Firma del cliente</div>
+                        <div class="border-top border-dark pt-2 mt-5">Aclaración</div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_taller_reparacion">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="taller_reparacion.report_taller_reparacion_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>

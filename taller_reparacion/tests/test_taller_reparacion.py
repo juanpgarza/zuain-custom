@@ -71,3 +71,15 @@ class TestTallerReparacion(TransactionCase):
         wizard.action_confirmar()
         self.assertEqual(reparacion.sale_order_ids, pedidos)
         self.assertEqual(reparacion.sale_order_count, 2)
+
+    def test_reporte_orden_trabajo(self):
+        reparacion = self._crear_reparacion()
+        reparacion.notas_reparacion = "<p>Cambio de pastillas de freno</p>"
+        html = self.env["ir.actions.report"]._render_qweb_html(
+            "taller_reparacion.report_taller_reparacion", reparacion.ids
+        )[0].decode()
+        self.assertIn(reparacion.name, html)
+        self.assertIn("AB123CD", html)
+        self.assertIn("Cliente Taller", html)
+        self.assertIn("Cambio de pastillas de freno", html)
+        self.assertIn("Firma del cliente", html)

@@ -8,6 +8,7 @@
                 <header>
                     <button name="action_vincular_venta" type="object" string="Pedido de venta"
                             class="btn-primary" invisible="state == 'cancelado'"/>
+                    <button name="%(action_report_taller_reparacion)d" type="action" string="Imprimir"/>
                     <button name="action_en_proceso" type="object" string="Iniciar"
                             invisible="state != 'borrador'"/>
                     <button name="action_terminado" type="object" string="Terminar"
