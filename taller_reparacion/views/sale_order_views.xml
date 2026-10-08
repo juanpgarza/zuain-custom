@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_taller" model="ir.ui.view">
+        <field name="name">sale.order.form.taller</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_ver_taller_reparaciones" type="object" class="oe_stat_button"
+                        icon="fa-wrench" invisible="taller_reparacion_count == 0"
+                        groups="sales_team.group_sale_salesman">
+                    <field name="taller_reparacion_count" widget="statinfo" string="Órdenes de trabajo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

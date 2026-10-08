@@ -46,6 +46,9 @@ class TestTallerReparacion(TransactionCase):
         self.assertEqual(pedido.origin, reparacion.name)
         self.assertEqual(reparacion.sale_order_ids, pedido)
         self.assertEqual(pedido.taller_reparacion_ids, reparacion)
+        self.assertEqual(pedido.taller_reparacion_count, 1)
+        accion = pedido.action_ver_taller_reparaciones()
+        self.assertEqual(accion["res_id"], reparacion.id)
 
     def test_vincular_pedidos_existentes(self):
         reparacion = self._crear_reparacion()
