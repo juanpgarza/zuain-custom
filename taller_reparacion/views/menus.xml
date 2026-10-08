@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_taller_root" name="Taller" web_icon="sale,static/description/icon.png" sequence="25"/>
+    <menuitem id="menu_taller_root" name="Taller" web_icon="taller_reparacion,static/description/icon.png" sequence="25"/>
     <menuitem id="menu_taller_reparacion" name="Órdenes de trabajo" parent="menu_taller_root"
               action="action_taller_reparacion" sequence="10"/>
     <menuitem id="menu_taller_vehiculo" name="Vehículos" parent="menu_taller_root"
